@@ -22,14 +22,7 @@ export const FetchMakePayments= (props) => async dispatch => {
                 type : FAIL_EVENT,
                 payload : error_message
             })
-            dispatch({
-                type : SubscriptionPaymentStatusReducer,
-                payload : {'status' : 'error','error' : String(error_message)}
-            })
-            dispatch({
-                type : IsloadingPricingPaymentReducer,
-                payload : false
-            })
+           
 
         }else if (data.success) {
             const val = JSON.parse(props)
@@ -37,18 +30,7 @@ export const FetchMakePayments= (props) => async dispatch => {
             //     type : SUCCESS_EVENT,
             //     payload : val['message']
             // })
-            dispatch({
-                type : SubscriptionPaymentStatusReducer,
-                payload : {'status' : 'success','success' : val['message']}
-            })
-            dispatch({
-                type : RealoadUserAuthReducer,
-                payload : true
-            })
-            dispatch({
-                type : IsloadingPricingPaymentReducer,
-                payload : false
-            })
+           
         }              
 
     }   
@@ -72,7 +54,7 @@ export const FetchMakePayments= (props) => async dispatch => {
         redirect: 'follow',
         body : props
       };
-    fetch(`${import.meta.env.VITE_APP_API_URL}/app/mpesa_payments/`, requestOptions)
+    fetch(`${import.meta.env.VITE_APP_API_URL}/path to your view/`, requestOptions)
     .then(response => response.text())
     .then(result => AuthFunc(result))
     .catch(error => {
@@ -90,15 +72,7 @@ export const FetchMakePayments= (props) => async dispatch => {
             type : FAIL_EVENT,
             payload : 'An error occured when making your request. Try again later'
         })
-        dispatch({
-            type : SubscriptionPaymentStatusReducer,
-            payload : {'status' : 'error','error' : String(err)}
-        })
-        dispatch({
-            type : IsloadingPricingPaymentReducer,
-            payload : false
-        })
-        
+       
      }
 
 
